@@ -13,7 +13,7 @@ dev/
 
 #RStudio files
 .Renviron
-.Rproj
+*.Rproj
 .Rproj.user/
 .Rhistory
 .Rapp.history
