@@ -29,15 +29,13 @@ library(ggplot2)
 ```
 
 ```{r, load-data}
-here::i_am("code/DF_DATA550_FinalProj2.Rmd")
-
-push_data <- readRDS(here::here("data/push_tbeval.rds"))
+push_data <- readRDS(here::here("data/push_sim_data.rds"))
 
 ```
 
 ## Introduction
 
-For the final project, I am planning to use data from the PUSH trial - a randomized clinical trial of children with HIV in Kenya. The dataset includes observations (rows) for `r nrow(push_data)` children with HIV who were hospitalized for concurrent illness and evaluated for TB disease. The dataset includes variables for clinical, radiographic, diagnostic tests, and biomarker data for each participant.
+For the final project, I using a simulated data set from the PUSH trial - a randomized clinical trial of children with HIV in Kenya. The dataset includes observations (rows) for `r nrow(push_data)` children with HIV who were hospitalized for concurrent illness and evaluated for TB disease. The dataset includes variables for clinical, radiographic, diagnostic tests, and biomarker data for each participant.
 
 The objectives for this analysis are to: 
 
@@ -110,7 +108,7 @@ my.render.cat <- function(x) {
         sprintf("%d (%0.0f%%)", FREQ, PCT))))
 }
 
-caption <- "Table 1. Basic demographics of PUSH trial participants (n=181) by TB Disease Status"
+caption <- "Table 1. Basic demographics of PUSH trial participants (n=133) by TB Disease Status"
 footnote <- c("Continuous variables reported as Mean (SD).", 
               "Categorical variables reported as n (%). Values may not sum to total (N) due to missing data.")
 
