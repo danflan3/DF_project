@@ -1,0 +1,22 @@
+#main directory
+*.html
+
+#sub-directory
+output/*.rds
+dev/
+
+#makefiles
+#.random_numbers
+
+#MacOS
+.DS_Store
+
+#RStudio files
+.Renviron
+.Rproj
+.Rproj.user/
+.Rhistory
+.Rapp.history
+.RData
+.RDataTmp
+.Ruserdata
