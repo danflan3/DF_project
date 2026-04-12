@@ -3,6 +3,13 @@
 > Author: Dan Flanagan
 
 ------------------------------------------------------------------------
+## Synchronize Package Environment
+Project code written using `R version 4.5.2`. 
+Package environment captured in the `renv.lock` file using `renv()` version 1.2.0.
+
+Running the command `make install` will restore package environment via `renv::restore()`
+
+If you have a different version of `R` or `renv()` installed, you may need to manually edit the version numbers documented in the `renv.lock` file in order to successfully restore the package environment.
 
 ## Code Description
 
@@ -33,3 +40,4 @@
 
   - contains rules for building the report
   - `make .DF_report.html` will compile the report and output DF_report.html
+  - `make install` will restore package environment used to generate the project

@@ -12,3 +12,7 @@ DF_report.html: DF_report.Rmd data/push_sim_data.rds
 .PHONY: clean
 clean:
 	rm -f output/*.rds && rm -f report.html && rm -f .random_numbers
+
+.PHONY: install
+install: 
+	Rscript -e "renv::restore(prompt = FALSE)"
