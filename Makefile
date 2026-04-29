@@ -26,7 +26,16 @@ df_project_image: Dockerfile $(PROJECTFILES) $(RENVFILES)
 	docker build -t df_project_image .
 	touch $@
 
-# rule to run the docker hub container and automatically create DF_report.html; 
+# rule to run the docker hub container and automatically create DF_report.html;
+# set default OS_TYPE to mac (or linux) if not provided by user; user can override this variable when running the make command to specify windows if they are using a windows machine 
+OS_TYPE ?= mac
+
 # allows user to simply run the container to automatically generate report and save to the report/ directory on their local machine (via volume mounting)
-report/DF_report.html: 
+# Usage: make report/DF_report.html (Mac/Linux default)
+#        make report/DF_report.html OS_TYPE=windows
+report/DF_report.html:
+ifeq ($(OS_TYPE),windows)
+	docker run -v "/$$(pwd)"/report:/home/rstudio/project/report danflan3/df_project_image
+else
 	docker run -v "$$(pwd)"/report:/home/rstudio/project/report danflan3/df_project_image
+endif
