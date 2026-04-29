@@ -43,4 +43,8 @@ ENV RENV_PATHS_CACHE=renv/.cache
 COPY --from=base /home/rstudio/project .
 
 ### AT THIS STAGE MAKE DF_report.html RUNS SUCCESSFULLY WITHIN THE CONTAINER ###
-### NEXT: CREATE report/ DIRECTORY IN BOTH LOCAL AND CONTAINER PROJ DIRECTORIES; WRITE MAKEFILE RULE TO MOUNT report/ DIRECTORY AND AUTOMATICALLY CREATE DF_report.html WITHIN report/ WHEN CONTAINER IS RUN LOCALLY ###
+# create report/ directory within container project directory for mounting to local machine;
+RUN mkdir report
+
+# add entry point to automatically make DF_report.html when container is run; 
+CMD make DF_report.html && mv DF_report.html report/

@@ -3,6 +3,8 @@
 
 #sub-directory
 output/*.rds
+report/*.html
+report/*.txt
 dev/
 
 #makefiles

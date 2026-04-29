@@ -10,7 +10,7 @@ output/figure1.rds: code/02_make_figure1.R data/push_sim_data.rds
 
 .PHONY: clean
 clean:
-	rm -f output/*.rds && rm -f DF_report.html
+	rm -f output/*.rds && rm -f DF_report.html && rm -f report/*.html
 
 .PHONY: install
 install: 
@@ -22,10 +22,11 @@ PROJECTFILES  = DF_report.Rmd code/00_clean_data.R code/01_make_table1.R code/02
 RENVFILES = renv.lock renv/activate.R renv/settings.json
 
 # rule to build the Docker image
-project_image: Dockerfile $(PROJECTFILES) $(RENVFILES)
-	docker build -t DF_project_image .
+df_project_image: Dockerfile $(PROJECTFILES) $(RENVFILES)
+	docker build -t df_project_image .
 	touch $@
 
-# rule to run the docker hub container and automatically create DF_report.html
+# rule to run the docker hub container and automatically create DF_report.html; 
+# allows user to simply run the container to automatically generate report and save to the report/ directory on their local machine (via volume mounting)
 report/DF_report.html: 
-	docker run -v "$$(pwd)/report":/DF_project/report <insert-dockerhub-user>/DF_project_image
+	docker run -v "$$(pwd)"/report:/home/rstudio/project/report danflan3/df_project_image
