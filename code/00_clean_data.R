@@ -3,12 +3,8 @@ here::i_am(
 )
 
 # load packages
-packages <- c("tidyverse","dplyr","here","table1","ggplot2")
-
-for (package in packages) {
-  library(package, character.only=T)
-}
-
+library(tidyverse)
+library(dplyr)
 
 # load SIM-DATA
 push <- read.csv(here::here("data/simulated_push_data.csv"), header = TRUE)
